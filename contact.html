@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Dream Homes</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Base Styles */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f9fafb;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #004a99;
+      text-decoration: underline;
+    }
+
+    /* Header */
+    header {
+      background-color: #000000; /* black */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      position: relative;
+    }
+
+    header .logo {
+      position: absolute;
+      left: 2rem;
+    }
+
+    header .logo img {
+      height: 48px;
+      object-fit: contain;
+      filter: brightness(0) invert(1); /* invert logo for black bg */
+    }
+
+    nav {
+      margin: 0 auto; /* center nav horizontally */
+      display: flex;
+      justify-content: space-between; /* space between nav links */
+      gap: 3rem;
+      width: 400px; /* fixed width for spacing */
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #f0f0f0;
+      white-space: nowrap;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: #1e90ff;
+      text-decoration: underline;
+    }
+
+    /* Main Content */
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 3rem auto 4rem auto;
+      padding: 0 1rem;
+    }
+
+    main h1 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #222;
+    }
+
+    /* Banner Image */
+    .banner-img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin: 0 auto 2.5rem auto;
+    }
+
+    /* Contact Info */
+    .contact-info {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #444;
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      margin: 0.6rem 0;
+      font-weight: 500;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background-color: #fff;
+      padding: 2.5rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 0 auto;
+      color: #444;
+    }
+
+    .contact-form label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.8px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #0066cc;
+      box-shadow: 0 0 8px rgba(0, 102, 204, 0.3);
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+    }
+
+    .contact-form button {
+      margin-top: 1.5rem;
+      background-color: #0066cc;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .contact-form button:hover {
+      background-color: #004a99;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #001f3f; /* dark blue */
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+
+    .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-section {
+      flex: 1 1 250px;
+    }
+
+    .footer-section h4 {
+      font-weight: 600;
+      color: #aad8ff;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-section ul li a {
+      color: #aad8ff;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Social icons colored by brand */
+    .social-icons a {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 36px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.15);
+    }
+
+    .social-icons a.facebook {
+      background-color: #3b5998;
+    }
+
+    .social-icons a.instagram {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    }
+
+    .social-icons a.email {
+      background-color: #6fcf97;
+    }
+
+    .social-icons a img {
+      width: 18px;
+      vertical-align: middle;
+      filter: none;
+      margin-top: 1px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      color: #99badd;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+        position: relative;
+      }
+
+      header .logo {
+        position: static;
+        margin-bottom: 0.5rem;
+      }
+
+      nav {
+        width: 100% !important;
+        margin: 0 auto;
+        justify-content: center !important;
+        gap: 1.5rem !important;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-section {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="download.png" alt="Dream Homes Logo" /></a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="properties.html">Properties</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <h1>Contact Us</h1>
+
+    <img src="logo.jpeg" alt="Contact Banner" class="banner-img" />
+
+    <section class="contact-info" aria-label="Contact Information">
+      <p><strong>Address:</strong> Chitwan-10, Nepal</p>
+      <p><strong>Phone:</strong> +977-9800000000</p>
+      <p><strong>Email:</strong> info@ektahousing.com</p>
+      <p><strong>Working Hours:</strong> Sunday – Friday, 9:00 AM – 6:00 PM</p>
+    </section>
+
+    <section class="contact-form" aria-label="Contact Form">
+      <form action="#" method="post" novalidate>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." rows="6" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section" aria-label="Follow Us Social Media">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="facebook">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+          </a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="instagram">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+          </a>
+          <a href="mailto:info@dreamhomes.com" aria-label="Email" class="email">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section" aria-label="Site Navigation">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section" aria-label="Contact Information">
+        <h4>Contact Us</h4>
+        <p><strong>Address:</strong> Bharatpur-10, Chitwan, Nepal</p>
+        <p><strong>Phone:</strong> +977-9800000000</p>
+        <p><strong>Email:</strong> info@ektahousing.com</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2025 ektahousing.com. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

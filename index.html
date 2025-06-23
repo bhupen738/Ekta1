@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dream Homes - Real Estate</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: solidblue;
+      padding: 10px 0;
+    }
+
+    .nav-link {
+      color: white !important;
+      font-weight: 600;
+      padding: 10px 20px;
+    }
+
+    .nav-link:hover {
+      color: #ffc107 !important;
+    }
+
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+    }
+
+    .search-bar-container {
+      position: relative;
+      z-index: 3;
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 10px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 900px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      flex-wrap: wrap;
+    }
+
+    .search-bar input,
+    .search-bar select {
+      flex: 1 1 250px;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .search-bar button {
+      border: none;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      flex: 1 1 150px;
+    }
+
+    .search-bar button:hover {
+      background-color: #0056b3;
+    }
+
+    .property-details {
+      padding: 60px 20px;
+    }
+
+    .property-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 51, 102, 0.1);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .property-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 51, 102, 0.2);
+    }
+
+    .property-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .property-info {
+      padding: 20px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .btn-custom {
+      background-color: #003366;
+      color: white;
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #0059b3;
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer {
+      margin-top: 60px; /* Added margin to create space above footer */
+      background-color: #002244;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .footer-section {
+      flex: 1 1 250px;
+    }
+
+    .footer-section h4 {
+      font-size: 20px;
+      color: #ffc107;
+      margin-bottom: 15px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin: 8px 0;
+    }
+
+    .footer-section ul li a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .footer-section ul li a:hover {
+      text-decoration: underline;
+      color: #ffc107;
+    }
+
+    .social-icons a {
+      margin-right: 15px;
+      font-size: 24px;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #cccccc;
+    }
+
+    @media(max-width:768px){
+      .hero-content h1 { font-size: 36px; }
+      .hero-content p { font-size: 16px; }
+      .search-bar { flex-direction: column; }
+      .search-bar input, .search-bar select, .search-bar button { width: 100%; }
+    }
+
+    .city-section {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .city-section h2 {
+      font-size: 28px;
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .city-section h2 span {
+      color: #b71c1c;
+    }
+
+    .city-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 40px;
+      justify-items: center;
+    }
+
+    .city-item {
+      text-align: center;
+    }
+
+    .city-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .city-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .city-name {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .property-count {
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 60px 20px 60px 20px; /* Added bottom padding */
+      text-align: center;
+      background-color: #fff;
+    }
+
+    .services h2 {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    .services .highlight {
+      color: #b30000;
+      font-weight: bold;
+    }
+
+    /* Grid Layout */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Individual Service Card */
+    .service-card {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-card img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 15px;
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: #555;
+      min-height: 60px;
+    }
+
+    /* Blue Button Styles */
+    .service-card button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007BFF; /* Bootstrap blue */
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .service-card button:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Dream Homes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="properties.html">Properties</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Register/Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Find Your Dream Home</h1>
+      <p>Buy, sell or rent properties across Nepal with ease and security.</p>
+    </div>
+
+    <!-- Enhanced Search Bar -->
+    <div class="search-bar-container">
+      <form class="search-bar" action="#" method="get">
+        <input type="text" placeholder="Enter location (e.g., Kathmandu, Pokhara)" name="location" required>
+        <select class="form-select" name="type" required>
+          <option value="" disabled selected>Select Type</option>
+          <option value="rent">House Rent</option>
+          <option value="sell">House Sell</option>
+          <option value="land">Land Sell</option>
+          <option value="exchange">House Exchange</option>
+        </select>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- City list -->
+  <section class="city-section">
+    <h2>Find <span>Your Property</span> in Your Preferred City</h2>
+    <div class="city-grid">
+      <div class="city-item">
+        <img src="./images/kathmandu.jpg" alt="Kathmandu" />
+        <div class="city-name">Kathmandu</div>
+        <div class="property-count">12450+ Properties</div>
+      </div>
+      <div class="city-item">
+        <img src="./images/chitwan.jpg" alt="Chitwan" />
+        <div class="city-name">Chitwan</div>
+        <div class="property-count">7630+ Properties</div>
+      </div>
+      <div class="city-item">
+        <img src="./images/pokhara.jpg" alt="Pokhara" />
+        <div class="city-name">Pokhara</div>
+        <div class="property-count">8320+ Properties</div>
+      </div>
+      <div class="city-item">
+        <img src="./images/lalitpur.jpg" alt="Lalitpur" />
+        <div class="city-name">Lalitpur</div>
+        <div class="property-count">6890+ Properties</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property Listings -->
+  <section class="property-details">
+    <h2 class="text-center text-primary fw-bold mb-5">Featured Properties</h2>
+    <div class="container">
+      <div class="row g-4">
+        <!-- Property 1 -->
+        <div class="col-md-4">
+          <div class="property-card">
+            <img src="house1.jpg" alt="Elegant city apartment in Kathmandu" />
+            <div class="property-info">
+              <h3>Elegant City Apartment</h3>
+              <p>Located in Kathmandu with great views</p>
+              <div class="price">Rs. 55,00,000</div>
+              <a href="purchase.html" class="btn btn-custom">See More</a>
+            </div>
+          </div>
+        </div>
+        <!-- Property 2 -->
+        <div class="col-md-4">
+          <div class="property-card">
+            <img src="house2.jpg" alt="Cozy suburban home" />
+            <div class="property-info">
+              <h3>Cozy Suburban Home</h3>
+              <p>Perfect for families, with a spacious backyard</p>
+              <div class="price">Rs. 45,00,000</div>
+              <a href="#" class="btn btn-custom">See More</a>
+            </div>
+          </div>
+        </div>
+        <!-- Property 3 -->
+        <div class="col-md-4">
+          <div class="property-card">
+            <img src="house3.jpg" alt="Luxury villa with pool and garden" />
+            <div class="property-info">
+              <h3>Luxury Villa</h3>
+              <p>Swimming pool and garden included</p>
+              <div class="price">Rs. 85,00,000</div>
+              <a href="#" class="btn btn-custom">See More</a>
+            </div>
+          </div>
+        </div>
+        <!-- Property 4 -->
+        <div class="col-md-4">
+          <div class="property-card">
+            <img src="house4.jpg" alt="Modern house in Pokhara" />
+            <div class="property-info">
+              <h3>Modern House</h3>
+              <p>Located in Pokhara with mountain views</p>
+              <div class="price">Rs. 60,00,000</div>
+              <a href="purchase.html" class="btn btn-custom">See More</a>
+            </div>
+          </div>
+        </div>
+        <!-- Property 5 -->
+        <div class="col-md-4">
+          <div class="property-card">
+            <img src="house5.jpg" alt="Budget 2-bedroom home in Chitwan" />
+            <div class="property-info">
+              <h3>Budget House</h3>
+              <p>Affordable 2-bedroom home in Chitwan</p>
+              <div class="price">Rs. 30,00,000</div>
+              <a href="#" class="btn btn-custom">See More</a>
+            </div>
+          </div>
+        </div>
+        <!-- Property 6 -->
+        <div class="col-md-4">
+          <div class="property-card">
+            <img src="house6.jpg" alt="Residential land plot in Bharatpur" />
+            <div class="property-info">
+              <h3>Land Plot for Sale</h3>
+              <p>Residential plot, 10 aana, in Bharatpur</p>
+              <div class="price">Rs. 25,00,000</div>
+              <a href="#" class="btn btn-custom">See More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service blog -->
+  <section class="services">
+    <h2><span>Explore our</span> <span class="highlight">Real Estate</span> Services</h2>
+    <div class="service-grid">
+
+      <div class="service-card">
+        <img src="https://img.icons8.com/color/48/handshake.png" alt="Agents" />
+        <h3>Agents / Brokers</h3>
+        <p>Hassle-Free Solutions! Buy - Sell - Rent Your Property</p>
+        <button>Read More</button>
+      </div>
+
+      <div class="service-card">
+        <img src="https://img.icons8.com/color/48/construction-worker.png" alt="Builders" />
+        <h3>Builders / Developers</h3>
+        <p>Trusted and reliable builders to fulfill your dream home.</p>
+        <button>Read More</button>
+      </div>
+
+      <div class="service-card">
+        <img src="https://img.icons8.com/fluency/48/blueprint.png" alt="Consultants" />
+        <h3>Consultants</h3>
+        <p>Expert advice to help you make informed decisions.</p>
+        <button>Read More</button>
+      </div>
+
+      <div class="service-card">
+        <img src="https://img.icons8.com/color/48/home--v3.png" alt="Renters" />
+        <h3>Renters</h3>
+        <p>Find affordable and comfortable rental properties.</p>
+        <button>Read More</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+
+        <!-- Social Media -->
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook" style="color:#3b5998;"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
+            <a href="https://wa.me/9779855050123" target="_blank"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok" style="color:#000;"></i></a>
+            <a href="mailto:info@dreamhomes.com"><i class="fas fa-envelope" style="color:#c71610;"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="properties.html">Properties</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="register.html">Register/Login</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p><strong>Address:</strong> Bharatpur-10, Chitwan, Nepal</p>
+          <p><strong>Phone:</strong> +977-9855050123</p>
+          <p><strong>Email:</strong> info@dreamhomes.com</p>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>© 2025 ektahousing.com. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (Popper + Bootstrap JS) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

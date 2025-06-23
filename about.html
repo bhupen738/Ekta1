@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Ekta Group Plotting & Housing</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header and Navbar */
+    header {
+      background-color: #000;
+      padding: 20px 30px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 6px 10px;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #0d6efd;
+      border-bottom: 2px solid #0d6efd;
+    }
+
+    /* Banner */
+    .banner {
+      position: relative;
+      height: 400px;
+      background: url('logo.jpeg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .banner h1 {
+      position: relative;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #0d6efd;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0d6efd;
+      margin-bottom: 25px;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Team Section */
+    .team {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .team-member {
+      background-color: #fff;
+      text-align: center;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .team-member:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-member img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 4px solid #0d6efd;
+    }
+
+    .team-member h3 {
+      margin-bottom: 5px;
+      color: #0d6efd;
+    }
+
+    .role {
+      font-weight: 600;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #001f3f;
+      color: #ffffff;
+      padding: 50px 20px;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    footer h4 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    footer p {
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .social-icons a {
+      margin-right: 15px;
+      font-size: 1.5rem;
+    }
+
+    .social-icons a.facebook {
+      color: #1877F2;
+    }
+
+    .social-icons a.instagram {
+      color: #E4405F;
+    }
+
+    .social-icons a.email {
+      color: #D44638;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 8px;
+    }
+
+    footer ul li a {
+      color: #ffffff;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    footer ul li a:hover {
+      color: #0d6efd;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .team {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="banner">
+    <h1>Ekta Group Plotting & Housing Pvt. Ltd.</h1>
+  </section>
+
+  <main>
+    <h2 class="section-title">हाम्रो परिचय</h2>
+    <p>एकता ग्रुप प्लटिङ्ग तथा हाउसिङ्ग प्रा.लि., चितवन जिल्ला अन्तर्गत भरतपुर महानगरपालिका वाडा नं. १० मा अवस्थित, एक अग्रणी र विश्वसनीय रियल स्टेट कम्पनी हो।</p>
+
+    <h2 class="section-title">Our Team</h2>
+    <div class="team">
+      <div class="team-member">
+        <img src="images/team2.jpg" alt="Sita Sharma">
+        <h3>Sita Sharma</h3>
+        <p class="role">Sales & Marketing Head</p>
+        <p>sita@ektahousing.com<br />+977-9812345678</p>
+      </div>
+      <div class="team-member">
+        <img src="images/team3.jpg" alt="Ramesh Thapa">
+        <h3>Ramesh Thapa</h3>
+        <p class="role">Site Coordinator</p>
+        <p>ramesh@ektahousing.com<br />+977-9823456789</p>
+      </div>
+      <div class="team-member">
+        <img src="M3.jpeg" alt="Ganesh Adhikari">
+        <h3>Ganesh Adhikari</h3>
+        <p class="role">Sales & Marketing Head</p>
+        <p>ganesh@ektahousing.com<br />+977-9812345678</p>
+      </div>
+      <div class="team-member">
+        <img src="Sujan.jpeg" alt="Sujan Adhikari">
+        <h3>Sujan Adhikari</h3>
+        <p class="role">Site Coordinator</p>
+        <p>sujan@ektahousing.com<br />+977-9851348987</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/9779855050123" target="_blank"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+           <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok" style="color:#000;"></i></a>
+          <a href="mailto:info@ektahousing.com" class="email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="properties.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <p><strong>Address:</strong> Bharatpur-10, Chitwan, Nepal</p>
+        <p><strong>Phone:</strong> +977-9800000000</p>
+        <p><strong>Email:</strong> info@ektahousing.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Ekta Group. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
